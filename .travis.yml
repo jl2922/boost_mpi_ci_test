@@ -12,8 +12,7 @@ addons:
     packages:
       - g++-6 gcc-6 libstdc++-6-dev
 env:
-  - CXX_C=g++-6
-  - C_C=gcc-6
+  - CXX_C=g++-6 C_C=gcc-6
 script: ./ci.sh
 cache:
   directories:

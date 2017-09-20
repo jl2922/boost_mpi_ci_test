@@ -9,7 +9,7 @@ include $(LOCAL_MAKEFILE)
 endif
 
 all: $(TEST_EXE)
-	mpirun -n 2 ./$(TEST_EXE)
+	./$(TEST_EXE)
 
 $(TEST_EXE): main.cc
 	$(CXX) $(CXXFLAGS) main.cc -o $(TEST_EXE) $(LDLIBS)

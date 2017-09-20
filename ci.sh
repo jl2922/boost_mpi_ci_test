@@ -42,7 +42,7 @@ export PATH=$TRAVIS_BUILD_DIR/deps/protobuf-3.4.1/bin:$PATH
 export LD_LIBRARY_PATH=$TRAVIS_BUILD_DIR/deps/protobuf-3.4.1/lib:$LD_LIBRARY_PATH
 
 # Get Boost (with MPI).
-if [ -f "deps1/boost-1.65.1/lib/libboost_mpi.so" ] && [ -f "deps/boost-1.65.1/lib/libboost_serialization.so" ]; then
+if [ -f "deps/boost-1.65.1/lib/libboost_mpi.so" ] && [ -f "deps/boost-1.65.1/lib/libboost_serialization.so" ]; then
 	echo "Using cached Boost"
 else
 	echo "Downloading Boost"

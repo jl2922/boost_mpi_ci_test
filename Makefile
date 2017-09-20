@@ -1,10 +1,10 @@
-CXX := g++
+CXX := mpic++
 CXXFLAGS := -std=c++17 -Wall -Wextra -fopenmp -O3 -g
 TEST_EXE := test.x
 
-CONFIG_FILE := local.mk
-ifneq ($(wildcard $(CONFIG_FILE)),)
-include $(CONFIG_FILE)
+LOCAL_MAKEFILE := local.mk
+ifneq ($(wildcard $(LOCAL_MAKEFILE)),)
+include $(LOCAL_MAKEFILE)
 endif
 
 all: $(TEST_EXE)

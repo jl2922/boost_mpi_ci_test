@@ -2,27 +2,19 @@ language: cpp
 sudo: required
 dist: trusty
 compiler:
-- gcc
+  - gcc
 os:
-- linux
-cache: deps
+  - linux
 addons:
   apt:
     sources:
       - ubuntu-toolchain-r-test
     packages:
-      - g++-5
-before_install:
-- mkdir -p deps
-- cd deps
-- wget -nc https://www.open-mpi.org/software/ompi/v3.0/downloads/openmpi-3.0.0.tar.bz2
-- wget -nc https://dl.bintray.com/boostorg/release/1.65.1/source/boost_1_65_1.tar.bz2
-- wget -nc https://github.com/google/protobuf/releases/download/v3.4.1/protobuf-cpp-3.4.1.tar.gz
-- tar xjf openmpi-3.0.0.tar.bz2
-- cd openmpi-3.0.0
-- ./configure
-- make -j 8
-- make install
-- cd ..
-- cp ci.mk local.mk
+      - g++-6 gcc-6 libstdc++-6-dev
+env:
+  - CXX_C=g++-6
+  - C_C=gcc-6
 script: ./ci.sh
+cache:
+  directories:
+    - deps

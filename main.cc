@@ -6,11 +6,12 @@
 
 namespace mpi = boost::mpi;
 
-int main() {
+int main()
+{
   printf("hello world\n");
 
-  mpi::environment env(argc, argv);
   mpi::communicator world;
+  mpi::environment env;
   std::cout << "I am process " << world.rank() << " of " << world.size() << "."
             << std::endl;
   std::unordered_map<int, int> m;

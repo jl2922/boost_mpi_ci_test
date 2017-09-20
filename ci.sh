@@ -56,7 +56,7 @@ else
   ./bootstrap.sh > bootstrap.sh
   echo 'libraries =  --with-mpi --with-serialization ;' >> project-config.jam
   echo 'using mpi : mpic++ ;' >> project-config.jam
-	./b2 -j4 install --prefix=$TRAVIS_BUILD_DIR/deps/boost-1.65.1 CC=$C_C CXX=$CXX_C &> b2.log
+	./b2 -j4 --prefix=$TRAVIS_BUILD_DIR/deps/boost-1.65.1 CC=$C_C CXX=$CXX_C install &> b2.log
 	cd ../../
 fi
 export PATH=$TRAVIS_BUILD_DIR/deps/boost-1.65.1/bin:$PATH

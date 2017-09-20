@@ -12,4 +12,4 @@ all: $(TEST_EXE)
 	./$(TEST_EXE)
 
 $(TEST_EXE): main.cc
-	$(CXX) $(CXXFLAGS) main.cc -o $(TEST_EXE) -lprotobuf
+	$(CXX) $(CXXFLAGS) main.cc -o $(TEST_EXE) $(LDLIBS)

@@ -42,7 +42,7 @@ export PATH=$TRAVIS_BUILD_DIR/deps/protobuf-3.4.1/bin:$PATH
 export LD_LIBRARY_PATH=$TRAVIS_BUILD_DIR/deps/protobuf-3.4.1/lib:$LD_LIBRARY_PATH
 
 # Get Boost (with MPI).
-if [ -f "deps/boost-1.65.1/lib/libboost_mpi.so" ] && [ -f "deps/boost-1.65.1/lib/libboost_serialization.so" ]; then
+if [ -f "deps1/boost-1.65.1/lib/libboost_mpi.so" ] && [ -f "deps/boost-1.65.1/lib/libboost_serialization.so" ]; then
 	echo "Using cached Boost"
 else
 	echo "Downloading Boost"
@@ -54,8 +54,10 @@ else
 	cd boost_1_65_1
   mkdir -p $TRAVIS_BUILD_DIR/deps/boost-1.65.1
   ./bootstrap.sh &> bootstrap.log
-  echo 'libraries =  --with-mpi --with-serialization ;' >> project-config.jam
+  echo 'libraries =  --with-mpi --with-serialization --without-python;' >> project-config.jam
   echo 'using mpi : mpic++ ;' >> project-config.jam
+	echo 'using gcc : gcc-6 ;' >> project-config.jam
+	echo 'using g++ : g++-6 ;' >> project-config.jam
 	./b2 -j4 --prefix=$TRAVIS_BUILD_DIR/deps/boost-1.65.1 install
 	cd ../../
 fi

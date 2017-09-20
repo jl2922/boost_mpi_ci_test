@@ -1,5 +1,5 @@
 CXX := mpic++
-CXXFLAGS := -std=c++17 -Wall -Wextra -fopenmp -O3 -g -I $(TRAVIS_BUILD_DIR)/deps/boost-1.65.1/include
+CXXFLAGS := -std=c++17 -Wall -Wextra -fopenmp -O3 -g -I $(HCI_DEPS_DIR)/boost-1.65.1/include
 LDLIBS := -L $(TRAVIS_BUILD_DIR)/deps/protobuf-3.4.1/lib -L $(TRAVIS_BUILD_DIR)/deps/boost-1.65.1/lib -lprotobuf -lboost_mpi -lboost_serialization
 TEST_EXE := test.x
 

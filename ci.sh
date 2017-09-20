@@ -41,5 +41,27 @@ fi
 export PATH=$TRAVIS_BUILD_DIR/deps/protobuf-3.4.1/bin:$PATH
 export LD_LIBRARY_PATH=$TRAVIS_BUILD_DIR/deps/protobuf-3.4.1/lib:$LD_LIBRARY_PATH
 
+# Get Boost (with MPI).
+if [ -f "deps/boost/lib/libboost_mpi.so" ] && [ -f "deps/boost/lib/libboost_serialization.so" ]; then
+	echo "Using cached Boost"
+else
+	echo "Downloading Boost"
+  mkdir -p downloads
+  cd downloads
+	wget https://dl.bintray.com/boostorg/release/1.65.1/source/boost_1_65_1.tar.bz2
+	tar xjf boost_1_65_1.tar.bz2
+	echo "Configuring and building Boost"
+	cd boost_1_65_1
+  mkdir -p $TRAVIS_BUILD_DIR/deps/boost-1.65.1
+  ./bootstrap.sh
+  echo 'libraries =  --with-mpi --with-serialization ;' >> project-config.jam
+  echo 'using mpi : mpic++ ;' >> project-config.jam
+	./b2 -j4 --prefix=$TRAVIS_BUILD_DIR/deps/boost-1.65.1 CC=$C_C CXX=$CXX_C &> b2.log
+	cd ../../
+fi
+export PATH=$TRAVIS_BUILD_DIR/deps/boost-1.65.1/bin:$PATH
+export LD_LIBRARY_PATH=$TRAVIS_BUILD_DIR/deps/boost-1.65.1/lib:$LD_LIBRARY_PATH
+
+
 mpic++ --version
 make -j

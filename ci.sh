@@ -54,7 +54,7 @@ else
 	cd boost_1_65_1
   mkdir -p $TRAVIS_BUILD_DIR/deps/boost-1.65.1
   ./bootstrap.sh &> bootstrap.log
-  echo 'libraries =  --with-mpi --with-serialization --without-python;' >> project-config.jam
+  echo 'libraries =  --with-mpi --with-serialization --without-python ;' >> project-config.jam
   echo 'using mpi : mpic++ ;' >> project-config.jam
 	echo 'using gcc : gcc-6 ;' >> project-config.jam
 	echo 'using g++ : g++-6 ;' >> project-config.jam

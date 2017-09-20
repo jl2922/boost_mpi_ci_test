@@ -63,6 +63,7 @@ fi
 export PATH=$TRAVIS_BUILD_DIR/deps/boost-1.65.1/bin:$PATH
 export LD_LIBRARY_PATH=$TRAVIS_BUILD_DIR/deps/boost-1.65.1/lib:$LD_LIBRARY_PATH
 
+rm -rf downloads
 
 mpic++ --version
 make -j

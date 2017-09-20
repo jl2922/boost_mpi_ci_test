@@ -53,10 +53,10 @@ else
 	echo "Configuring and building Boost"
 	cd boost_1_65_1
   mkdir -p $TRAVIS_BUILD_DIR/deps/boost-1.65.1
-  ./bootstrap.sh > bootstrap.sh
+  ./bootstrap.sh &> bootstrap.log
   echo 'libraries =  --with-mpi --with-serialization ;' >> project-config.jam
   echo 'using mpi : mpic++ ;' >> project-config.jam
-	./b2 -j4 --prefix=$TRAVIS_BUILD_DIR/deps/boost-1.65.1 CC=$C_C CXX=$CXX_C install &> b2.log
+	./b2 -j4 --prefix=$TRAVIS_BUILD_DIR/deps/boost-1.65.1 CC=$C_C CXX=$CXX_C install
 	cd ../../
 fi
 export PATH=$TRAVIS_BUILD_DIR/deps/boost-1.65.1/bin:$PATH

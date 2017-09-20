@@ -1,6 +1,6 @@
 CXX := mpic++
 CXXFLAGS := -std=c++17 -Wall -Wextra -fopenmp -O3 -g
-LDLIBS := -L $TRAVIS_BUILD_DIR/deps/protobuf-3.4.1/lib -lprotobuf
+LDLIBS := -L $(TRAVIS_BUILD_DIR)/deps/protobuf-3.4.1/lib -lprotobuf
 TEST_EXE := test.x
 
 LOCAL_MAKEFILE := local.mk
